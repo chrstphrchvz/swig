@@ -1,6 +1,6 @@
 # file: runme.tcl
 
-catch { load ./example[info sharedlibextension] example}
+catch { load ./example[info sharedlibextension] [string totitle example]}
 
 set a 37
 set b 42

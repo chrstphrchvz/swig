@@ -1,11 +1,11 @@
 
 # This is the imports runtime testcase. 
 proc import {} {
-    if [ catch { load ./imports_b[info sharedlibextension] imports_b} err_msg ] {
+    if [ catch { load ./imports_b[info sharedlibextension] [string totitle imports_b]} err_msg ] {
             puts stderr "Could not load shared object:\n$err_msg"
             exit 1
     }
-    if [ catch { load ./imports_a[info sharedlibextension] imports_a} err_msg ] {
+    if [ catch { load ./imports_a[info sharedlibextension] [string totitle imports_a]} err_msg ] {
             puts stderr "Could not load shared object:\n$err_msg"
             exit 1
     }
