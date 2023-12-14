@@ -1,11 +1,13 @@
 /* File : example.i */
 %module example
 
+#include <tcl.h>
+
 %{
 extern int gcd(int x, int y);
 extern int gcdmain(Tcl_Size argc, char *argv[]);
-extern int count(char *bytes, int len, char c);
-extern void capitalize (char *str, int len);
+extern int count(char *bytes, Tcl_Size len, char c);
+extern void capitalize (char *str, Tcl_Size len);
 extern void circle (double cx, double cy);
 extern int squareCubed (int n, int *OUTPUT);
 %}
@@ -36,16 +38,16 @@ extern int    gcd(int x, int y);
 
 extern int gcdmain(Tcl_Size argc, char *argv[]);
 
-%typemap(in) (char *bytes, int len) {
+%typemap(in) (char *bytes, Tcl_Size len) {
   $1 = Tcl_GetStringFromObj($input,&$2);
 }
 
-extern int count(char *bytes, int len, char c);
+extern int count(char *bytes, Tcl_Size len, char c);
 
 
 /* This example shows how to wrap a function that mutates a string */
 
-%typemap(in) (char *str, int len) {
+%typemap(in) (char *str, Tcl_Size len) {
   char *temp;
   temp = Tcl_GetStringFromObj($input,&$2);
   $1 = (char *) malloc($2+1);
@@ -61,7 +63,7 @@ extern int count(char *bytes, int len, char c);
  free($1);
 }   
 
-extern void capitalize(char *str, int len);
+extern void capitalize(char *str, Tcl_Size len);
 
 
 /* A multi-valued constraint.  Force two arguments to lie
