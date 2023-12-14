@@ -33,9 +33,9 @@ int gcdmain(Tcl_Size argc, char *argv[]) {
   return 0;
 }
 
-int count(char *bytes, Tcl_Size len, char c) {
-  int i;
-  int count = 0;
+Tcl_Size count(char *bytes, Tcl_Size len, char c) {
+  Tcl_Size i;
+  Tcl_Size count = 0;
   for (i = 0; i < len; i++) {
     if (bytes[i] == c) count++;
   }
@@ -43,7 +43,7 @@ int count(char *bytes, Tcl_Size len, char c) {
 }
 
 void capitalize(char *str, Tcl_Size len) {
-  int i;
+  Tcl_Size i;
   for (i = 0; i < len; i++) {
     str[i] = (char)toupper(str[i]);
   }

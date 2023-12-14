@@ -6,7 +6,7 @@
 %{
 extern int gcd(int x, int y);
 extern int gcdmain(Tcl_Size argc, char *argv[]);
-extern int count(char *bytes, Tcl_Size len, char c);
+extern Tcl_Size count(char *bytes, Tcl_Size len, char c);
 extern void capitalize (char *str, Tcl_Size len);
 extern void circle (double cx, double cy);
 extern int squareCubed (int n, int *OUTPUT);
@@ -42,7 +42,7 @@ extern int gcdmain(Tcl_Size argc, char *argv[]);
   $1 = Tcl_GetStringFromObj($input,&$2);
 }
 
-extern int count(char *bytes, Tcl_Size len, char c);
+extern Tcl_Size count(char *bytes, Tcl_Size len, char c);
 
 
 /* This example shows how to wrap a function that mutates a string */
